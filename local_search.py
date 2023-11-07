@@ -14,11 +14,9 @@ matrix = np.array([
 init_tour = [0,1,2,3,4,5,6,7]
 
 def calculate_distance(tour, distance_matrix):
-    """Calculate the total distance of the tour."""
     return sum(distance_matrix[tour[i-1]][tour[i]] for i in range(len(tour)))
 
 def two_opt(tour, distance_matrix, strategy='best'):
-    """Apply 2-OPT to improve the tour."""
     while True:
         best_distance = calculate_distance(tour, distance_matrix)
         for i in range(len(tour) - 1):
@@ -41,10 +39,10 @@ def two_opt(tour, distance_matrix, strategy='best'):
 print("Initial tour:", init_tour)
 print("Initial distance:", calculate_distance(init_tour, matrix))
 
-bf_tour = two_opt(init_tour, matrix, 'best')
-print("Best found tour:", bf_tour)
-print("Best found distance:", calculate_distance(bf_tour, matrix))
+best_found = two_opt(init_tour, matrix, 'best')
+print("Best found tour:", best_found)
+print("Best found distance:", calculate_distance(best_found, matrix))
 
-ff_tour = two_opt(init_tour, matrix, 'first')
-print("First found tour:", ff_tour)
-print("First found distance:", calculate_distance(ff_tour, matrix))
+first_found = two_opt(init_tour, matrix, 'first')
+print("First found tour:", first_found)
+print("First found distance:", calculate_distance(first_found, matrix))

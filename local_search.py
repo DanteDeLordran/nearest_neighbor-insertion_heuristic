@@ -21,11 +21,11 @@ def two_opt(tour : list, matrix : list, strategy='best') -> list:
         best_distance = calculate_distance(tour, matrix)
         for i in range(len(tour) - 1):
             for j in range(i+2, len(tour) + (i>0)):
-                if j == len(tour): j = 0  # wrap around to the beginning
+                if j == len(tour): j = 0  
                 new_tour = tour.copy()
                 new_tour[i+1:j+1] = reversed(tour[i+1:j+1])  # this creates a new tour by reversing a section
                 new_distance = calculate_distance(new_tour, matrix)
-                if new_distance < best_distance:  # if the new tour is shorter
+                if new_distance < best_distance:  
                     tour = new_tour  # make this the new current tour
                     best_distance = new_distance
                     if strategy == 'first':

@@ -13,7 +13,7 @@ matrix = np.array([
 
 init_tour = [0,1,2,3,4,5,6,7]
 
-def calculate_distance(tour, distance_matrix):
+def calculate_distance(tour : list, distance_matrix : list) -> int:
     return sum(distance_matrix[tour[i-1]][tour[i]] for i in range(len(tour)))
 
 def two_opt(tour, distance_matrix, strategy='best'):

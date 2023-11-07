@@ -16,7 +16,7 @@ init_tour = [0,1,2,3,4,5,6,7]
 def calculate_distance(tour : list, distance_matrix : list) -> int:
     return sum(distance_matrix[tour[i-1]][tour[i]] for i in range(len(tour)))
 
-def two_opt(tour, distance_matrix, strategy='best'):
+def two_opt(tour : list, distance_matrix : list, strategy='best') -> list:
     while True:
         best_distance = calculate_distance(tour, distance_matrix)
         for i in range(len(tour) - 1):

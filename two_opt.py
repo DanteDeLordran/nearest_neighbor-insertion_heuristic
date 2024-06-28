@@ -11,14 +11,16 @@ matrix = np.array([
     [54, 61, 79, 56, 21, 70, 16, 0]
 ])
 
-init_tour = [0,1,2,3,4,5,6,7]
+init_tour = [0, 1, 2, 3, 4, 5, 6, 7]
+
 
 def calculate_total_distance(route, distance_matrix):
     total_distance = 0
     for i in range(len(route) - 1):
-        total_distance += distance_matrix[route[i]][route[i+1]]
+        total_distance += distance_matrix[route[i]][route[i + 1]]
     total_distance += distance_matrix[route[-1]][route[0]]
     return total_distance
+
 
 def two_opt(route, distance_matrix):
     best_route = route
@@ -30,11 +32,13 @@ def two_opt(route, distance_matrix):
                 if j - i == 1: continue
                 new_route = route[:]
                 new_route[i:j] = route[j - 1:i - 1:-1]
-                if calculate_total_distance(new_route, distance_matrix) < calculate_total_distance(best_route, distance_matrix):
+                if calculate_total_distance(new_route, distance_matrix) < calculate_total_distance(best_route,
+                                                                                                   distance_matrix):
                     best_route = new_route
                     improvement = True
         route = best_route
     return best_route
+
 
 # Test the function with a random distance matrix
 
